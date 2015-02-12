@@ -54,7 +54,9 @@ The first is how the enum values are namespaced. We can name the value `Regular`
     
 Because the compiler knows that `user.type` is declared as `UserType` we can use the name of the member value without the name of the enum.
 
-The second interesting difference is that enum values are not mapped to integers. The type of the enum values is `UserType` and not `Int`. If you need the old Objective-C behavior, in which all members are mapped to an integer you can use enums with *Raw values* in Swift.
+The second interesting difference is that enum values are not mapped to integers. The type of the enum values is `UserType` and not `Int`. By default enum values in Swift only have the type of the enum and are not mapped to any other value.
+
+If you need the old Objective-C behavior, in which all members are mapped to a value of another type, you can use enums with *Raw values* in Swift.
 ###Raw values 
 
 Using raw values you can assign a value to every enum member when declaring the enum:
@@ -122,7 +124,7 @@ Next, let's set up the bank account with the cash balance and a withdrawal funct
       }
     }
 
-The withdrawal function takes an amount to withdraw and returns a value of type `WithdrawalResult`. This `WithdrawalResult` can either be a `.Success` case or an `.Error` case. The function checks if the funds are sufficient. If there's enough cash in the account, the requested amount gets withdrawn and a `.Success` case is returned. As you can see in this example, each enum member that has an associated value needs to be initialized with a value of the correct type - a success case needs to be created with an `Int` that describes the remaining account balance.
+The withdrawal function takes an amount to withdraw and returns a value of type `WithdrawalResult`. It needs to be marked as `mutating` because we are changing the cash amount in the bank account (we discussed this in [part 1 of this tutorial series](https://www.makeschool.com/tutorials/learn-swift-by-example-part-1-structs/structs-in-swift)). The `WithdrawalResult` can either be a `.Success` case or an `.Error` case. The function checks if the funds are sufficient. If there's enough cash in the account, the requested amount gets withdrawn and a `.Success` case is returned. As you can see in this example, each enum member that has an associated value needs to be initialized with a value of the correct type - a success case needs to be created with an `Int` that describes the remaining account balance.
 
 If the funds are insufficient we return an `.Error` case. The error case needs to be initialized with a `String` that describes the error message.
 
