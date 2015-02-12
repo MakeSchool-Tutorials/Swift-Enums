@@ -48,7 +48,7 @@ The use case we outlined just now, modeling different user types, works pretty m
     
 In the simplest case enums can be used similar as in Objective-C. However, there are two interesting details about the Swift enum.
 
-The first, is how the enum values are namespaced. We can name the value `Regular` instead of `UserTypeRegular`. Swift automatically namespaces the member values with the name of the enum (`UserType.Regular`) while enum values in Objective-C exist in the global namespace (`UserTypeRegular`). This namespacing also allows the following short-form:
+The first is how the enum values are namespaced. We can name the value `Regular` instead of `UserTypeRegular`. Swift automatically namespaces the member values with the name of the enum (`UserType.Regular`) while enum values in Objective-C exist in the global namespace (`UserTypeRegular`). This namespacing also allows the following short-form:
 
     user.type = .Admin
     
@@ -83,16 +83,16 @@ Similarly you can create an enum member from a raw value:
     
 Raw values are not limited to integers. You can also use strings, characters, or floating-point numbers. If you aren't using integers you will have to explicitly assign a value to every enum member.
     
-So far, so basic. I have showed you that enums in Swift can be used very similarly to enums in Objective-C. Now it's time to dive into some advanced features!
+So far, so good. I have showed you that enums in Swift can be used very similarly to enums in Objective-C. Now it's time to dive into some advanced features!
 
 ##Enums in Swift: Advanced Features
 
 Enums in Swift have a bunch of features they didn't have in Objective-C. Enums can have initializers, methods, computed properties and they can even conform to protocols! We're going to start by exploring another feature, called *Associated Values* because I believe it is the most important enum feature in Swift.
 
 ###Associated Values
-In Objetive-C we could already associate values with enum members by storing an integer value for each enum entry, as shown at the beginning of this tutorial. So what is new about this?
+In Objective-C we could already associate values with enum members by storing an integer value for each enum entry, as shown at the beginning of this tutorial. So what is new about this?
 
-Firstly, associated values allow each enum member to store data of a any type. One enum member can store a string while another member stores an integer, etc. In Objective-C and when working with raw value enums in Swift, all members need to have the same type (e.g. integer).
+Firstly, associated values allow each enum member to store data of any type. One enum member can store a string while another member stores an integer, etc. In Objective-C and when working with raw value enums in Swift, all members need to have the same type (e.g. integer).
 
 Secondly, associated values are assigned when the enum value is *created*, not when the enum is declared. In the young history of the Swift language this feature has most commonly been used to model the return result of functions. Let's dive into a larger example to explain associated values. 
 
@@ -150,7 +150,7 @@ For me personally this has been one of the most useful ways to use enums! If you
 
 ### Initializers and functions
 
-Enums can also have initializers and even functions. I want to show you second example to give you an idea for what you could use these features.
+Enums can also have initializers and even functions. I want to show you a second example to give you an idea for how you could use these features.
 
 Let's assume we want to model a player's turn in a  dice based game. The only rule of the game is that the player needs to roll a dice until she gets a value that is *not* 6. If the player dices a 6 she needs to repeat the dice roll. 
 
@@ -206,7 +206,7 @@ When using enums with associated values we can only use switch statements to per
 
 The code inside of the loop is pretty straightforward. We check for the two possible cases. If the player turn has a value `.WaitingToRollDice`, we call the `rollDice()` function. If the value is `.Done` we print the result of the dice roll and terminate the loop by setting `done` to `true`.
 
-If you run this code often enough (by making small changes in the playground file) you should get lucky and see case in which the dice is actually rolled twice:
+If you run this code often enough (by making small changes in the playground file) you should get lucky and see a case in which the dice is actually rolled twice:
 
 ![](dice_roll.png)
 
