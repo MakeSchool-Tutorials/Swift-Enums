@@ -207,6 +207,12 @@ When using enums with associated values we can only use switch statements to per
 
 The code inside of the loop is pretty straightforward. We check for the two possible cases. If the player turn has a value `.WaitingToRollDice`, we call the `rollDice()` function. If the value is `.Done` we print the result of the dice roll and terminate the loop by setting `done` to `true`.
 
+If you run this code often enough (by making small changes in the playground file) you should get lucky and see case in which the dice is actually rolled twice:
+
+![](dice_roll.png)
+
+Playground will indicate this by showing how many times a certain line has been executed.
+
 With this example we have built a very simple [state machine](http://en.wikipedia.org/wiki/Finite-state_machine).
 
 ##Conclusion
