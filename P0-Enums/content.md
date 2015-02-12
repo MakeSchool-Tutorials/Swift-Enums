@@ -7,11 +7,11 @@ In [part 1 of this tutorial series](https://www.makeschool.com/tutorials/learn-s
 
 Today we are going to discuss a second very useful value type - `enum`. Very similar to structs, enums in Swift are a *lot* more powerful than in Objective-C.
 
-We will start this article by taking a look how enums work in Objective-C. Then we'll move to Swift, first looking at basics use cases, then we will dive into some exciting examples of leveraging enums in Swift.
+We will start this article by taking a look how enums work in Objective-C. Then we'll move to Swift, first looking at basics use cases, then diving into some exciting examples of leveraging enums in Swift.
 
 ##Enums in Objetive-C
 
-Enums in Objetive-C are pretty simple, here's an example:
+Enums in Objetive-C are just a collection of different constants. Most frequently enums are used to model a set of different types. For example we can use enums to model the type of users in an application:
 
     typedef NS_ENUM(NSInteger, UserType) {
         UserTypeRegular,
@@ -19,15 +19,15 @@ Enums in Objetive-C are pretty simple, here's an example:
         UserTypeAdmin
     }; 
 
-We could use this enum to model the role of a user in an application:
+If we have a user class with a `type` property (of type `UserType`), then we can assign a value from the enum as following:
 
     user.type = UserTypeRegular
     
-This is a typical use case for an enum in Objetive-C (or pure C). Behind the scenes each of the enum entries an is mapped to an integer value (starting with 0 for the first entry). In Objective-C the above line would be equivalent to this one:
+This is a typical use case for an enum in Objetive-C (or pure C). Behind the scenes each of the enum entries is mapped to an integer value (starting with 0 for the first entry). In Objective-C the above line would be equivalent to this one:
 
     user.type = 0
     
-And that's about how much you can do with enums in Objective-C: give integer constants meaningful names. 
+And that's about how much you can do with enums in Objective-C. All an enum does is giving integer constants meaningful names.
 
 ##Enums in Swift: Basics
  
@@ -44,18 +44,17 @@ The use case we outlined just now, modeling different user types, works pretty m
     }
 
     var user = User()
-
     user.type = UserType.Admin
     
-In the simplest case enums can be used similar as in Objective-C. There are two interesting details about the Swift enum.
+In the simplest case enums can be used similar as in Objective-C. However, there are two interesting details about the Swift enum.
 
-The first is how the enum values are namespaced. We can call the value `Regular` instead of `UserTypeRegular`. Swift automatically namespaces the member values with the name of the enum (`UserType.Regular`) while enum values in Objective-C exist in the global namespace (`UserTypeRegular`). This namespacing also allows the following short-form:
+The first, is how the enum values are namespaced. We can name the value `Regular` instead of `UserTypeRegular`. Swift automatically namespaces the member values with the name of the enum (`UserType.Regular`) while enum values in Objective-C exist in the global namespace (`UserTypeRegular`). This namespacing also allows the following short-form:
 
     user.type = .Admin
     
 Because the compiler knows that `user.type` is declared as `UserType` we can use the name of the member value without the name of the enum.
 
-The second interesting difference is that in Swift enum values are not mapped to integers. The type of the enum values is `UserType` and not `Int`. If you need the old Objective-C behavior, in which all members are mapped to an integer you can use enums with *Raw values* in Swift.
+The second interesting difference is that enum values are not mapped to integers. The type of the enum values is `UserType` and not `Int`. If you need the old Objective-C behavior, in which all members are mapped to an integer you can use enums with *Raw values* in Swift.
 ###Raw values 
 
 Using raw values you can assign a value to every enum member when declaring the enum:
