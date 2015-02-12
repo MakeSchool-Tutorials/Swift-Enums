@@ -3,7 +3,7 @@ title: "Learn Swift by example - Part 2: Enums"
 slug: enums-in-swift
 ---     
 
-In [part 1 of this tutorial series](https://www.makeschool.com/tutorials/learn-swift-by-example-part-1-structs/structs-in-swift) we have discussed the power of structs in Swift (if you have missed it, you should go readit. We have seen that they often can be used instead of classes and that they can increase the maintainablity of your code. Structs are *value types* and are copied on assignment, every receiver has its own private copy that can be safely read and modified.
+In [part 1 of this tutorial series](https://www.makeschool.com/tutorials/learn-swift-by-example-part-1-structs/structs-in-swift) we have discussed the power of structs in Swift (if you have missed it, you should go read it now). We have seen that they often can be used instead of classes and that they can increase the maintainability of your code. Structs are *value types* and are copied on assignment, every receiver has its own private copy that can be safely read and modified.
 
 Today we are going to discuss a second very useful value type - `enum`. Very similar to structs, enums in Swift are a *lot* more powerful than in Objective-C.
 
@@ -31,7 +31,7 @@ And that's about how much you can do with enums in Objective-C: give integer con
 
 ##Enums in Swift: Basics
  
-The use case we outlined just now, modelling different user types, works pretty much the same in Swift:
+The use case we outlined just now, modeling different user types, works pretty much the same in Swift:
 
     enum UserType {
       case Regular
@@ -99,7 +99,7 @@ Secondly, associated values are assigned when the enum value is *created*, not w
 
 We want to model a bank account. The bank account has a cash amount associated with it. It also has a method to withdraw money. If the withdrawal amount is larger than the cash amount, the transaction fails and we want to return an error message to the caller. If there's enough cash in the account, the money get's withdrawn and we want to return the new balance to the caller. Depending on success or failure of the transaction we want to return a value with a different type.
 
-It turns out that this can be modelled very nicely with an enum that has associated values:
+It turns out that this can be modeled very nicely with an enum that has associated values:
 
     enum WithdrawalResult {
       case Success(Int)
@@ -123,7 +123,7 @@ Next, let's set up the bank account with the cash balance and a withdrawal funct
       }
     }
 
-The withdrawal fuction takes an amount to withdraw and returns a value of type `WithdrawalResult`. This `WithdrawalResult` can either be a `.Success` case or an `.Error` case. The function checks if the funds are sufficient. If there's enough cash in the account, the requested amount gets withdrawn and a `.Success` case is returned. As you can see in this example, each enum member that has an associated value needs to be initialized with a value of the correct type - a success case needs to be created with an `Int` that describes the remaining account balance.
+The withdrawal function takes an amount to withdraw and returns a value of type `WithdrawalResult`. This `WithdrawalResult` can either be a `.Success` case or an `.Error` case. The function checks if the funds are sufficient. If there's enough cash in the account, the requested amount gets withdrawn and a `.Success` case is returned. As you can see in this example, each enum member that has an associated value needs to be initialized with a value of the correct type - a success case needs to be created with an `Int` that describes the remaining account balance.
 
 If the funds are insufficient we return an `.Error` case. The error case needs to be initialized with a `String` that describes the error message.
 
@@ -170,7 +170,7 @@ The turn can be in two different states, waiting for a dice roll or having compl
 
 The initializer in this example is pretty simple. When a new `PlayerTurn` is created it's always in the `.WaitingToRollDice` state.
 
-Next, we need to add a funtion that performs a dice roll. Add this function to the enum:
+Next, we need to add a function that performs a dice roll. Add this function to the enum:
 
     mutating func rollDice() -> Int {
         let diceResult = Int(arc4random_uniform(6) + 1)
@@ -182,7 +182,7 @@ Next, we need to add a funtion that performs a dice roll. Add this function to t
      
 The first important thing to notice, is that this function is marked as `mutating`. Depending on the result of the dice roll we will change the enum value from `.WaitingToRollDice` to `.Done` - that is a mutation (change) of the enum value and requires the `mutating` keyword. The function doesn't take any parameters and it returns an `Int` (the result of the dice roll). 
 
-Inside of the function we generate a random number between 1 and 6. We switch to the `.Done` state, only if the dice result is smaller than 6. Otherwise we remain in the same state. That's all we need for modelling the `PlayerTurn`!
+Inside of the function we generate a random number between 1 and 6. We switch to the `.Done` state, only if the dice result is smaller than 6. Otherwise we remain in the same state. That's all we need for modeling the `PlayerTurn`!
 
 Now all that remains is writing the code that uses this player turn model:
 
@@ -205,7 +205,7 @@ First we create a player turn and a loop variable. We need the `done` variable b
      
 When using enums with associated values we can only use switch statements to perform checks. That's why we need the additional boolean value to control wether the loop should continue or not.
 
-The code insidee of the loop is pretty straightforward. We check for the two possible cases. If the player turn has a value `.WaitingToRollDice`, we call the `rollDice()` function. If the value is `.Done` we print the result of the dice roll and terminate the loop by setting `done` to `true`.
+The code inside of the loop is pretty straightforward. We check for the two possible cases. If the player turn has a value `.WaitingToRollDice`, we call the `rollDice()` function. If the value is `.Done` we print the result of the dice roll and terminate the loop by setting `done` to `true`.
 
 With this example we have built a very simple [state machine](http://en.wikipedia.org/wiki/Finite-state_machine).
 
@@ -215,7 +215,7 @@ Enums are very powerful in Swift! We can associate values with enum members and 
 
 We can also use enums to build state machines. Enums are guaranteed to only store one of their possible values at any point in time, this guarantee can be used to write more predictable code.
 
-The possibilites don't end here, I'm very excited to see how enums will be used to write better Swift code.
+The possibilities don't end here, I'm very excited to see how enums will be used to write better Swift code.
 
 If you want to learn more about Swift and ship your own original iPhone App or iPhone Game you should attend our [Summer Academy](https://makeschool.com/apply?referrer=54750)!
 
