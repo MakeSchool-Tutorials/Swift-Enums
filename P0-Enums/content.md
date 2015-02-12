@@ -3,15 +3,15 @@ title: "Learn Swift by example - Part 2: Enums"
 slug: enums-in-swift
 ---     
 
-In [part 1 of this tutorial series](https://www.makeschool.com/tutorials/learn-swift-by-example-part-1-structs/structs-in-swift) we have discussed the power of structs in Swift (if you have missed it, you should go read it now). We have seen that they often can be used instead of classes and that they can increase the maintainability of your code. Structs are *value types* and are copied on assignment, every receiver has its own private copy that can be safely read and modified.
+In [part 1 of this tutorial series](https://www.makeschool.com/tutorials/learn-swift-by-example-part-1-structs/structs-in-swift) we have discussed the power of structs in Swift (if you have missed it, you should go read it now). We have seen that they often can be used instead of classes and that they can increase the maintainability of your code. Structs are *value types* and are copied on assignment, and every receiver has its own private copy that can be safely read and modified.
 
 Today we are going to discuss a second very useful value type - `enum`. Very similar to structs, enums in Swift are a *lot* more powerful than in Objective-C.
 
-We will start this article by taking a look how enums work in Objective-C. Then we'll move to Swift, first looking at basics use cases, then diving into some exciting examples of leveraging enums in Swift.
+We will start this article by taking a look how enums work in Objective-C. Then we'll move to Swift, first looking at basic use cases, then diving into some more exciting examples of leveraging enums in Swift.
 
-##Enums in Objetive-C
+##Enums in Objective-C
 
-Enums in Objetive-C are just a collection of different constants. Most frequently enums are used to model a set of different types. For example we can use enums to model the type of users in an application:
+Enums in Objective-C are just collections of different constants. Most frequently enums are used to model a set of different types. For example we can use enums to model the type of users in an application:
 
     typedef NS_ENUM(NSInteger, UserType) {
         UserTypeRegular,
@@ -23,11 +23,11 @@ If we have a user class with a `type` property (of type `UserType`), then we can
 
     user.type = UserTypeRegular
     
-This is a typical use case for an enum in Objetive-C (or pure C). Behind the scenes each of the enum entries is mapped to an integer value (starting with 0 for the first entry). In Objective-C the above line would be equivalent to this one:
+This is a typical use case for an enum in Objective-C (or pure C). Behind the scenes each of the enum entries is mapped to an integer value (starting with 0 for the first entry). In Objective-C the above line would be equivalent to this one:
 
     user.type = 0
     
-And that's about how much you can do with enums in Objective-C. All an enum does is giving integer constants meaningful names.
+And that's about all you can do with enums in Objective-C. All an enum does is give integer constants meaningful names.
 
 ##Enums in Swift: Basics
  
@@ -226,7 +226,7 @@ The possibilities don't end here, I'm very excited to see how enums will be used
 
 If you want to learn more about Swift and ship your own original iPhone App or iPhone Game you should attend our [Summer Academy](https://makeschool.com/apply?referrer=54750)!
 
-Stay tuned for more tutorials of this series!
+Stay tuned for more tutorials in this series!
 
 ##Related Resources
 
