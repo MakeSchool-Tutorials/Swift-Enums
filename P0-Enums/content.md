@@ -87,6 +87,22 @@ Raw values are not limited to integers. You can also use strings, characters, or
     
 So far, so good. I have showed you that enums in Swift can be used very similarly to enums in Objective-C. Now it's time to dive into some advanced features!
 
+###Exporting from Swift to Objective-C
+
+As of Swift 1.2 (February 9, 2015), enums in Swift can be exported to Objective-C using the `@objc` attribute. Borrowing from [Apple's official Swift blog](https://developer.apple.com/swift/blog/), the following Swift code:
+
+    @objc enum Bear: Int {
+      case Black, Grizzly, Polar
+    }
+
+imports into Objective-C as:
+
+    typedef NS_ENUM(NSInteger, Bear) {
+      BearBlack, BearGrizzly, BearPolar
+    };
+
+Note that in order to prevent naming conflicts the enum type (in this case `Bear`) is appended in front of the enum value; i.e. `Bear.Black` in Swift becomes `BearBlack` in Objective-C.
+
 ##Enums in Swift: Advanced Features
 
 Enums in Swift have a bunch of features they didn't have in Objective-C. Enums can have initializers, methods, computed properties and they can even conform to protocols! We're going to start by exploring another feature, called *Associated Values* because I believe it is the most important enum feature in Swift.
