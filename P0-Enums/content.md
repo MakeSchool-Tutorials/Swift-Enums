@@ -98,7 +98,7 @@ Firstly, associated values allow each enum member to store data of any type. One
 
 Secondly, associated values are assigned when the enum value is *created*, not when the enum is declared. In the young history of the Swift language this feature has most commonly been used to model the return result of functions. Let's dive into a larger example to explain associated values. 
 
-We want to model a bank account. The bank account has a cash amount associated with it. It also has a method to withdraw money. If the withdrawal amount is larger than the cash amount, the transaction fails and we want to return an error message to the caller. If there's enough cash in the account, the money get's withdrawn and we want to return the new balance to the caller. Depending on success or failure of the transaction we want to return a value with a different type.
+We want to model a bank account. The bank account has a cash amount associated with it. It also has a method to withdraw money. If the withdrawal amount is larger than the cash amount, the transaction fails and we want to return an error message to the caller. If there's enough cash in the account, the money get's withdrawn and we want to return the new balance to the caller. Depending on the success or failure of the transaction we want to return a value with a different type.
 
 It turns out that this can be modeled very nicely with an enum that has associated values:
 
@@ -154,7 +154,7 @@ For me personally this has been one of the most useful ways to use enums! If you
 
 Enums can also have initializers and even functions. I want to show you a second example to give you an idea for how you could use these features.
 
-Let's assume we want to model a player's turn in a  dice based game. The only rule of the game is that the player needs to roll a dice until she gets a value that is *not* 6. If the player dices a 6 she needs to repeat the dice roll. 
+Let's assume we want to model a player's turn in a  dice based game. The only rule of the game is that the player needs to roll a dice until she gets a value that is *not* 6. If the player rolls a 6 she needs to repeat the dice roll. 
 
 We can model this turn with an enum. Most cases in which you would actually use an enum are more complicated than this one, but I want to show you the functionality with an example that is not too extensive. This is what the basic enum should look like:
 
