@@ -210,7 +210,7 @@ The code inside of the loop is pretty straightforward. We check for the two poss
 
 If you run this code often enough (by making small changes in the playground file) you should get lucky and see a case in which the dice is actually rolled twice:
 
-![](dice_roll.png)
+![Code to roll the dice](dice_roll.png)
 
 Playground will indicate this by showing how many times a certain line has been executed.
 
